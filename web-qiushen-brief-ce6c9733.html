@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>球神直播 · 再访 · 杂志专题</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f2f2f0;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', sans-serif;
+            color: #2c2c2a;
+            line-height: 1.65;
+            padding: 2rem 1.2rem;
+        }
+
+        .page {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* 杂志式横幅 — 轻量，不喧宾夺主 */
+        .hero-banner {
+            background: #ffffff;
+            border-radius: 32px 32px 0 0;
+            padding: 3rem 2.5rem 2rem 2.5rem;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02), 0 2px 6px rgba(0, 0, 0, 0.02);
+            border-bottom: 1px solid #e6e4e0;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-banner h1 {
+            font-size: 2.8rem;
+            font-weight: 400;
+            letter-spacing: -0.5px;
+            color: #1a1a18;
+            margin-bottom: 0.6rem;
+            line-height: 1.2;
+        }
+        .hero-banner h1 span {
+            font-weight: 600;
+            color: #3b4a3c;
+        }
+        .hero-banner .sub {
+            font-size: 1.05rem;
+            color: #6b6b65;
+            max-width: 600px;
+            border-left: 3px solid #b7b7ae;
+            padding-left: 1rem;
+        }
+
+        /* 卡片容器 */
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 2.4rem;
+            border: 1px solid #e3e1dd;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.02), 0 1px 4px rgba(0, 0, 0, 0.02);
+            transition: box-shadow 0.15s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.04);
+        }
+
+        .card h2 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #2b3a2c;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.2px;
+            border-bottom: 1px solid #ecebe7;
+            padding-bottom: 0.3rem;
+        }
+
+        .card p {
+            margin-bottom: 0.8rem;
+            color: #3d3d39;
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .inset-note {
+            background: #f7f6f3;
+            padding: 0.9rem 1.4rem;
+            border-radius: 40px;
+            display: inline-block;
+            font-size: 0.9rem;
+            color: #4f4f48;
+            border: 1px solid #e2dfda;
+            margin-top: 0.8rem;
+        }
+
+        /* 特点两列微网格 */
+        .feature-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.4rem;
+            margin: 1.2rem 0 0.2rem;
+        }
+
+        .feature-item {
+            flex: 1 1 180px;
+            background: #f8f7f4;
+            padding: 0.8rem 1.2rem;
+            border-radius: 40px;
+            border: 1px solid #e4e1dc;
+            font-size: 0.95rem;
+            color: #3e3e39;
+        }
+
+        .feature-item strong {
+            font-weight: 600;
+            color: #2b3a2c;
+        }
+
+        /* 行内链接 */
+        a {
+            color: #39503b;
+            text-decoration: none;
+            border-bottom: 1px solid #bccdb8;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        a:hover {
+            color: #1e2f1f;
+            border-bottom-color: #1e2f1f;
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.2rem;
+            border-top: 1px dashed #dcd9d3;
+            padding-top: 1.2rem;
+        }
+        .faq-item {
+            flex: 1 1 180px;
+            font-size: 0.92rem;
+        }
+        .faq-item .q {
+            font-weight: 500;
+            color: #4b4a43;
+            display: block;
+            margin-bottom: 0.15rem;
+        }
+        .faq-item .a {
+            color: #6b6b63;
+        }
+
+        /* 页尾 */
+        .footer-note {
+            margin-top: 2rem;
+            background: #ffffff;
+            border-radius: 0 0 32px 32px;
+            padding: 1.8rem 2.5rem;
+            border: 1px solid #e3e1dd;
+            border-top: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            font-size: 0.94rem;
+            color: #5a5a53;
+        }
+
+        .footer-note .tag {
+            font-weight: 400;
+            background: #efede9;
+            padding: 0.2rem 1rem;
+            border-radius: 32px;
+            font-size: 0.85rem;
+            color: #4d4d44;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+            .hero-banner {
+                padding: 2rem 1.2rem 1.5rem;
+            }
+            .hero-banner h1 {
+                font-size: 2.2rem;
+            }
+            .card {
+                padding: 1.6rem 1.2rem;
+                border-radius: 20px;
+            }
+            .footer-note {
+                padding: 1.2rem 1.2rem;
+                flex-direction: column;
+                gap: 0.6rem;
+            }
+            .feature-item {
+                flex: 1 1 100%;
+            }
+            .faq-item {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- hero 横幅 -->
+        <div class="hero-banner">
+            <h1>再次翻开 · <span>球神直播</span></h1>
+            <div class="sub">那些值得收藏、反复回看的瞬间，总有一个熟悉的入口在等你。</div>
+        </div>
+
+        <!-- 三段自然介绍 + 卡片化 -->
+        <div class="card-grid">
+            <!-- 卡片1：从“再次访问”切入 -->
+            <div class="card">
+                <h2>回到熟悉的地方</h2>
+                <p>也许你曾偶然打开过，之后忙于生活便忘了收藏。直到某个晚上，又想起那个清晰的画面——流畅、安静，没有多余的干扰。<a href="https://web-qiushen.com">球神直播</a> 就是这样的存在：它不刻意提醒你回来，但只要你愿意，它一直在同样的位置，界面依然干净，内容依然聚焦。</p>
+                <p>再次访问不需要重新适应，所有的栏目和导航都保留着你记忆中的秩序。这也是为什么很多用户习惯把它保留在浏览器书签栏——不是因为它多特别，而是因为它不折腾。</p>
+                <div class="inset-note">📌 书签栏里留一个位置，比临时搜索更省心。</div>
+            </div>
+
+            <!-- 卡片2：收藏与持续关注 -->
+            <div class="card">
+                <h2>把喜欢留给时间</h2>
+                <p>直播的魅力有一部分在于「错过就没了」，但好的平台会让你有办法持续留意。在 <a href="https://web-qiushen.com">球神直播</a>，你不需要注册一堆账号，也不需要记住复杂的提醒设置——只需要收藏当前页面，或是在感兴趣的内容出现时记下播放时段。</p>
+                <div class="feature-row">
+                    <div class="feature-item"><strong>无需注册</strong> · 打开即看</div>
+                    <div class="feature-item"><strong>播放记录</strong> · 本地保留</div>
+                    <div class="feature-item"><strong>低干扰</strong> · 沉浸画面</div>
+                </div>
+                <p style="margin-top: 0.8rem;">持续关注不等于时刻盯着。很多常客会把链接放在桌面或者群聊里，想起来就点开看一眼。这种轻松的频率，反而让观看体验更自在。</p>
+            </div>
+
+            <!-- 卡片3：场景 + 自然说明 -->
+            <div class="card">
+                <h2>日常里的一个角落</h2>
+                <p>晚上十点，泡杯茶，打开收藏夹里的网址，画面亮起——这就是很多人的固定节目。不需要提前安排，也不需要对比哪个平台更好。<a href="https://web-qiushen.com">球神直播</a> 在众多链接里显得很普通，但普通恰恰是最不容易厌倦的。</p>
+                <p>从内容节奏到画面比例，它没有刻意迎合谁，也因此适合各种屏幕：电脑、平板、甚至手机浏览器。出差时打开，还是那个界面，加载速度依旧干脆。</p>
+                <!-- 微 FAQ 摘要 -->
+                <div class="faq-mini">
+                    <div class="faq-item">
+                        <span class="q">总是记不住地址？</span>
+                        <span class="a">收藏本页，或者用常用搜索词「球神直播」。</span>
+                    </div>
+                    <div class="faq-item">
+                        <span class="q">换设备怎么办？</span>
+                        <span class="a">同步书签，或直接输入链接，无需登录。</span>
+                    </div>
+                    <div class="faq-item">
+                        <span class="q">会不会改版？</span>
+                        <span class="a">风格一直保持简洁，可以放心收藏。</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 页尾访问提示 -->
+        <div class="footer-note">
+            <span>再次回来，还是那个熟悉的节奏。</span>
+            <span class="tag"><a href="https://web-qiushen.com">球神直播</a> · 收藏即重逢</span>
+        </div>
+    </div>
+</body>
+</html>
